@@ -1,0 +1,49 @@
+services:
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+      - WEBUI_PORT=8081
+      - TORRENTING_PORT=6881
+    volumes:
+      - /mnt/user/appdata/qbittorrent:/config
+      - /mnt/user/share/media/downloads:/downloads
+    restart: unless-stopped
+
+  autobangumi:
+    image: ghcr.io/estrellaxd/auto_bangumi:latest
+    container_name: AutoBangumi
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - PUID=99
+      - PGID=100
+      - UMASK=022
+    volumes:
+      - /mnt/user0/share/AutoBangumi/config:/app/config
+      - /mnt/user0/share/AutoBangumi/data:/app/data
+      - /mnt/user0/share/AutoBangumi/config/openai_patch.py:/app/module/parser/analyser/openai.py:ro
+    restart: unless-stopped
+    depends_on:
+      - qbittorrent
+
+  emby:
+    image: emby/embyserver:latest
+    container_name: EmbyServer
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - UID=1000
+      - GID=100
+      - GIDLIST=100
+    volumes:
+      - /mnt/user/appdata/EmbyServer:/config
+      - /mnt/user/share/media:/media
+    devices:
+      - /dev/dri:/dev/dri
+    restart: unless-stopped

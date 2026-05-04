@@ -1,0 +1,86 @@
+{
+    "program": {
+        "rss_time": 7200,
+        "rename_time": 60,
+        "webui_port": 7892
+    },
+    "downloader": {
+        "type": "qbittorrent",
+        "host": "http://192.168.0.4:8081",
+        "username": "admin",
+        "password": "adminadmin",
+        "path": "/downloads/Bangumi",
+        "ssl": false
+    },
+    "rss_parser": {
+        "enable": true,
+        "filter": [
+            "720",
+            "\\d+-\\d",
+            "\\[CHT\\]"
+        ],
+        "language": "zh"
+    },
+    "bangumi_manage": {
+        "enable": true,
+        "eps_complete": false,
+        "rename_method": "pn",
+        "group_tag": false,
+        "remove_bad_torrent": false
+    },
+    "log": {
+        "debug_enable": false
+    },
+    "proxy": {
+        "enable": false,
+        "type": "http",
+        "host": "192.168.0.3",
+        "port": 7890,
+        "username": "Clash",
+        "password": "hg6E6dwK"
+    },
+    "notification": {
+        "enable": false,
+        "providers": [
+            {
+                "type": "telegram",
+                "enabled": true,
+                "token": "",
+                "chat_id": "",
+                "webhook_url": null,
+                "server_url": null,
+                "device_key": null,
+                "user_key": null,
+                "api_token": null,
+                "template": null,
+                "url": null
+            }
+        ],
+        "type": "telegram",
+        "token": "",
+        "chat_id": ""
+    },
+    "experimental_openai": {
+        "enable": true,
+        "api_key": "<DASHSCOPE_API_KEY>",
+        "api_base": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "api_type": "openai",
+        "api_version": "2023-05-15",
+        "model": "qwen-turbo",
+        "deployment_id": ""
+    },
+    "security": {
+        "login_whitelist": [],
+        "login_tokens": [],
+        "mcp_whitelist": [
+            "127.0.0.0/8",
+            "10.0.0.0/8",
+            "172.16.0.0/12",
+            "192.168.0.0/16",
+            "::1/128",
+            "fe80::/10",
+            "fc00::/7"
+        ],
+        "mcp_tokens": []
+    }
+}

@@ -1,0 +1,87 @@
+<domain type='kvm'>
+  <name>OpenWrt</name>
+  <uuid>f18e5c1f-62a4-b047-8745-7d570d513ba6</uuid>
+  <description>OpenWrt</description>
+  <metadata>
+    <vmtemplate xmlns="unraid" name="Debian" icon="debian.png" os="debian"/>
+  </metadata>
+  <memory unit='KiB'>1048576</memory>
+  <currentMemory unit='KiB'>1048576</currentMemory>
+  <memoryBacking>
+    <nosharepages/>
+  </memoryBacking>
+  <vcpu placement='static'>1</vcpu>
+  <cputune>
+    <vcpupin vcpu='0' cpuset='0'/>
+  </cputune>
+  <os>
+    <type arch='x86_64' machine='pc-q35-7.2'>hvm</type>
+  </os>
+  <features>
+    <acpi/>
+    <apic/>
+  </features>
+  <cpu mode='host-passthrough' check='none' migratable='on'>
+    <topology sockets='1' dies='1' cores='1' threads='1'/>
+    <cache mode='passthrough'/>
+  </cpu>
+  <clock offset='utc'>
+    <timer name='rtc' tickpolicy='catchup'/>
+    <timer name='pit' tickpolicy='delay'/>
+    <timer name='hpet' present='no'/>
+  </clock>
+  <on_poweroff>destroy</on_poweroff>
+  <on_reboot>restart</on_reboot>
+  <on_crash>restart</on_crash>
+  <devices>
+    <emulator>/usr/local/sbin/qemu</emulator>
+    <disk type='file' device='disk'>
+      <driver name='qemu' type='raw' cache='writeback'/>
+      <!-- Disk image: /mnt/user/domains/immortalwrt-x86-64-generic-squashfs-combined-efi.img -->
+      <source file='/mnt/user/domains/immortalwrt-x86-64-generic-squashfs-combined-efi.img'/>
+      <target dev='hdc' bus='sata'/>
+      <serial>vdisk1</serial>
+      <boot order='1'/>
+    </disk>
+    <controller type='usb' index='0' model='ich9-ehci1'/>
+    <controller type='sata' index='0'/>
+    <controller type='virtio-serial' index='0'/>
+    <interface type='bridge'>
+      <mac address='52:54:00:fd:9b:32'/>
+      <source bridge='br0'/>
+      <model type='virtio-net'/>
+    </interface>
+    <serial type='pty'>
+      <target type='isa-serial' port='0'/>
+    </serial>
+    <console type='pty'>
+      <target type='serial' port='0'/>
+    </console>
+    <channel type='unix'>
+      <source mode='bind'/>
+      <target type='virtio' name='org.qemu.guest_agent.0'/>
+    </channel>
+    <!-- PCIe passthrough: 4 NIC ports (bus 08-0b, slot 00, func 0) -->
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <driver name='vfio'/>
+      <source><address domain='0x0000' bus='0x08' slot='0x00' function='0x0'/></source>
+    </hostdev>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <driver name='vfio'/>
+      <source><address domain='0x0000' bus='0x09' slot='0x00' function='0x0'/></source>
+    </hostdev>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <driver name='vfio'/>
+      <source><address domain='0x0000' bus='0x0a' slot='0x00' function='0x0'/></source>
+    </hostdev>
+    <hostdev mode='subsystem' type='pci' managed='yes'>
+      <driver name='vfio'/>
+      <source><address domain='0x0000' bus='0x0b' slot='0x00' function='0x0'/></source>
+    </hostdev>
+    <graphics type='vnc' port='-1' autoport='yes' websocket='-1' listen='0.0.0.0' keymap='en-us'/>
+    <video>
+      <model type='qxl' ram='65536' vram='65536' vgamem='16384' heads='1' primary='yes'/>
+    </video>
+    <memballoon model='none'/>
+  </devices>
+</domain>
