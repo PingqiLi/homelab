@@ -1,0 +1,61 @@
+<mxfile host="app.diagrams.net" modified="2026-05-08T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="homelab-topology" name="Homelab Topology">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="internet" value="Internet" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="850" y="40" width="180" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="ont" value="光猫 / ONT\n弱电箱" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="850" y="140" width="180" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="router" value="OPNsense 软路由\n(建议独立设备)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="850" y="250" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="core" value="核心交换机\n10G SFP+ + 2.5G" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="850" y="380" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="nas" value="NAS / Unraid\n(10G)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="520" y="520" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="proxmox" value="Proxmox 主机\n(10G)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="730" y="520" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="pc" value="主力 PC / 工作站\n(2.5G/10G)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="940" y="520" width="200" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="poe" value="PoE 交换机" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="520" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="ap" value="AP x2~4\nSSID -> VLAN10/20/30" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="650" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="cam" value="PoE 摄像头 xN\nVLAN50" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="1390" y="650" width="180" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="iot" value="IoT 网关\nZigbee/Matter" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="970" y="650" width="180" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rack" value="机柜区域建议\n- 客厅储物间/设备间/阳台柜\n- 避免卧室\n- 预留静音/散热/检修空间" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="430" y="650" width="500" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" edge="1" parent="1" source="internet" target="ont" style="endArrow=block;"/>
+        <mxCell id="e2" edge="1" parent="1" source="ont" target="router" style="endArrow=block;"/>
+        <mxCell id="e3" edge="1" parent="1" source="router" target="core" style="endArrow=block;"/>
+        <mxCell id="e4" edge="1" parent="1" source="core" target="nas" style="endArrow=block;"/>
+        <mxCell id="e5" edge="1" parent="1" source="core" target="proxmox" style="endArrow=block;"/>
+        <mxCell id="e6" edge="1" parent="1" source="core" target="pc" style="endArrow=block;"/>
+        <mxCell id="e7" edge="1" parent="1" source="core" target="poe" style="endArrow=block;"/>
+        <mxCell id="e8" edge="1" parent="1" source="poe" target="ap" style="endArrow=block;"/>
+        <mxCell id="e9" edge="1" parent="1" source="poe" target="cam" style="endArrow=block;"/>
+        <mxCell id="e10" edge="1" parent="1" source="poe" target="iot" style="endArrow=block;"/>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
