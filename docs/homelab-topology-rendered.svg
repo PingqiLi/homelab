@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <style>
+    .box { fill:#f8f9fa; stroke:#333; stroke-width:2; rx:10; ry:10; }
+    .core { fill:#d5e8d4; }
+    .net { fill:#dae8fc; }
+    .edge { stroke:#555; stroke-width:2; marker-end:url(#arrow); fill:none; }
+    .text { font-family: Arial, "PingFang SC", "Microsoft YaHei", sans-serif; font-size:20px; }
+    .small { font-size:16px; fill:#444; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+      <polygon points="0,0 10,4 0,8" fill="#555" />
+    </marker>
+  </defs>
+
+  <rect x="680" y="40" width="240" height="70" class="box net"/><text x="800" y="83" text-anchor="middle" class="text">Internet</text>
+  <rect x="680" y="150" width="240" height="80" class="box"/><text x="800" y="190" text-anchor="middle" class="text">光猫 / ONT</text>
+  <text x="800" y="214" text-anchor="middle" class="small">弱电箱入口</text>
+
+  <rect x="680" y="280" width="240" height="90" class="box" style="fill:#f8cecc"/>
+  <text x="800" y="325" text-anchor="middle" class="text">OPNsense 软路由</text>
+
+  <rect x="680" y="420" width="240" height="90" class="box core"/>
+  <text x="800" y="465" text-anchor="middle" class="text">核心交换机 (10G)</text>
+
+  <rect x="350" y="580" width="220" height="90" class="box" style="fill:#e1d5e7"/>
+  <text x="460" y="630" text-anchor="middle" class="text">NAS / Unraid</text>
+  <rect x="620" y="580" width="220" height="90" class="box" style="fill:#e1d5e7"/>
+  <text x="730" y="630" text-anchor="middle" class="text">Proxmox 主机</text>
+  <rect x="890" y="580" width="220" height="90" class="box" style="fill:#e1d5e7"/>
+  <text x="1000" y="630" text-anchor="middle" class="text">主力 PC / 工作站</text>
+  <rect x="1160" y="580" width="220" height="90" class="box core"/>
+  <text x="1270" y="630" text-anchor="middle" class="text">PoE 交换机</text>
+
+  <rect x="1050" y="740" width="170" height="80" class="box" style="fill:#fff2cc"/>
+  <text x="1135" y="785" text-anchor="middle" class="text">AP x2~4</text>
+  <rect x="1240" y="740" width="170" height="80" class="box" style="fill:#fff2cc"/>
+  <text x="1325" y="785" text-anchor="middle" class="text">PoE 摄像头</text>
+  <rect x="860" y="740" width="170" height="80" class="box" style="fill:#fff2cc"/>
+  <text x="945" y="785" text-anchor="middle" class="text">IoT 网关</text>
+
+  <rect x="120" y="730" width="660" height="110" class="box" style="fill:#f5f5f5"/>
+  <text x="450" y="770" text-anchor="middle" class="text">机柜建议：非卧室（噪音/散热/检修）</text>
+  <text x="450" y="805" text-anchor="middle" class="small">优先设备间/储物间/生活阳台柜，预留排风和维护空间</text>
+
+  <line x1="800" y1="110" x2="800" y2="150" class="edge"/>
+  <line x1="800" y1="230" x2="800" y2="280" class="edge"/>
+  <line x1="800" y1="370" x2="800" y2="420" class="edge"/>
+
+  <line x1="760" y1="510" x2="460" y2="580" class="edge"/>
+  <line x1="790" y1="510" x2="730" y2="580" class="edge"/>
+  <line x1="830" y1="510" x2="1000" y2="580" class="edge"/>
+  <line x1="860" y1="510" x2="1270" y2="580" class="edge"/>
+
+  <line x1="1240" y1="670" x2="1135" y2="740" class="edge"/>
+  <line x1="1270" y1="670" x2="1325" y2="740" class="edge"/>
+  <line x1="1210" y1="670" x2="945" y2="740" class="edge"/>
+</svg>
