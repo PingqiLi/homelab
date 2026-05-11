@@ -51,6 +51,7 @@
 
 - 可编辑拓扑：`docs/homelab-topology.drawio`
 - 渲染示意图：`docs/homelab-topology-rendered.svg`
+- 香山艺墅详细方案：`docs/xiangshan-homelab-plan.md`
 
 ---
 
